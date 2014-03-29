@@ -3,6 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatedUI", "AutomatedUI\AutomatedUI.csproj", "{33AF584D-5FB0-414C-ACC2-7622598FD4EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{84F5F6E2-7E78-4B63-B5F5-41665D975A16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "..\..\AutomationTestFrameWork\IntegrationTests\IntegrationTests.csproj", "{2F6A9CA8-9815-4FCB-A7B2-502169CE1E39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoExtensions", "..\..\AutomationTestFrameWork\KendoExtensions\KendoExtensions.csproj", "{AC0D4FAC-86CE-47AF-B532-E1E3B75F1655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumExtensions", "..\..\AutomationTestFrameWork\SeleniumExtensions\SeleniumExtensions.csproj", "{821F4D80-1094-4C40-B99F-36EDF4628F0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +21,22 @@ Global
 		{33AF584D-5FB0-414C-ACC2-7622598FD4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33AF584D-5FB0-414C-ACC2-7622598FD4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33AF584D-5FB0-414C-ACC2-7622598FD4EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F5F6E2-7E78-4B63-B5F5-41665D975A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F5F6E2-7E78-4B63-B5F5-41665D975A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F5F6E2-7E78-4B63-B5F5-41665D975A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F5F6E2-7E78-4B63-B5F5-41665D975A16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F6A9CA8-9815-4FCB-A7B2-502169CE1E39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F6A9CA8-9815-4FCB-A7B2-502169CE1E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F6A9CA8-9815-4FCB-A7B2-502169CE1E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F6A9CA8-9815-4FCB-A7B2-502169CE1E39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC0D4FAC-86CE-47AF-B532-E1E3B75F1655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0D4FAC-86CE-47AF-B532-E1E3B75F1655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0D4FAC-86CE-47AF-B532-E1E3B75F1655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0D4FAC-86CE-47AF-B532-E1E3B75F1655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{821F4D80-1094-4C40-B99F-36EDF4628F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{821F4D80-1094-4C40-B99F-36EDF4628F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{821F4D80-1094-4C40-B99F-36EDF4628F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{821F4D80-1094-4C40-B99F-36EDF4628F0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
