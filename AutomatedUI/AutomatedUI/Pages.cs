@@ -18,5 +18,15 @@ namespace AutomatedUI
                 return homePage;
             }
         }
+
+        public static DemoPage DemoPage
+        {
+            get
+            {
+                var demoPage = new DemoPage();
+                PageFactory.InitElements(Browser.Driver, demoPage);
+                return demoPage;
+            }
+        }
     }
 }
