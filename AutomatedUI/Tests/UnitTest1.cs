@@ -35,7 +35,7 @@ namespace Tests
         {
             Pages.DemoPage.Goto();
             Pages.DemoPage.ClickDemoLink("Grid");
-            Assert.IsTrue(Pages.DemoPage.CanEditProductName("TestProductName"));
+            Assert.IsTrue(Pages.DemoPage.CanEditProductName("TestRow"));
         }
 
         [TestCleanup]
