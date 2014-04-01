@@ -1,26 +1,19 @@
 ﻿using System;
 using AutomatedUI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Tests
 {
     [TestClass]
     public class UnitTest1
     {
-        //[TestMethod]
-        //public void Can_Go_To_Homepage()
-        //{
-        //    Pages.Homepage.Goto();
-        //    Assert.IsTrue(Pages.Homepage.IsAt());
-        //}
-
-        //[TestMethod]
-        //public void CanGo_To_Category()
-        //{
-        //    Pages.Homepage.Goto();
-        //    Pages.Homepage.SelectCategory("Java");
-        //    Assert.IsTrue(Pages.Homepage.IsAtCategoryPage("Java"));
-        //}
+        [TestFixtureSetUp]
+        public void Init()
+        {
+            var driver = Browser.DriverContext;
+        }
 
         [TestMethod]
         public void Can_Go_To_Demo_Page()

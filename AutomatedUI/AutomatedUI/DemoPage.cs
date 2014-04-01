@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using RobustHaven.IntegrationTests.KendoExtensions;
 using RobustHaven.IntegrationTests.SeleniumExtensions;
 
@@ -17,13 +19,29 @@ namespace AutomatedUI
     {
         public static string Url = "http://demos.telerik.com/kendo-ui/web/overview/index.html";
 
-
-        [FindsBy(How = How.CssSelector, Using = "h1#exampleTitle strong")]
-        private IWebElement demoTitlElement;
-
         public KendoGrid kendoGrid
         {
             get { return GetGridById("grid"); }
+        }
+
+        private IWebElement TryGetDemoTitleElement(string demoType)
+        {
+            int count = 0;
+            var demoTitle = Browser.DriverContext.FindElement(Browser.Driver, By.CssSelector("h1#exampleTitle strong"));
+            while (count < 10)
+            {
+                if (!demoTitle.Text.Contains(demoType))
+                {
+                    Thread.Sleep(500);
+                    demoTitle = Browser.DriverContext.FindElement(Browser.Driver, By.CssSelector("h1#exampleTitle strong"));
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return demoTitle;
         }
 
         public void Goto()
@@ -39,8 +57,8 @@ namespace AutomatedUI
 
         public bool IsAt(string demoType)
         {
-            demoType = demoType + " /";
-            if (demoType == demoTitlElement.Text)
+            var demoElement = TryGetDemoTitleElement(demoType);
+            if (demoElement.Text.Contains(demoType))
             {
                 return true;
             }
@@ -49,43 +67,28 @@ namespace AutomatedUI
 
         public void ClickDemoLink(string demoType)
         {
-            var demoLink = Browser.Driver.FindElement(By.LinkText(demoType));
+            var demoLink = Browser.DriverContext.FindElement(Browser.Driver, By.LinkText(demoType));
             demoLink.Click();
         }
 
         public KendoGrid GetGridById(string gridId)
         {
-           var kendoGrid = new KendoGrid(Browser.Driver as IWebDriver, Browser.Driver.FindElement(By.Id(gridId)));
+            var kendoGrid = new KendoGrid(Browser.Driver as IWebDriver, Browser.Driver.FindElement(By.Id(gridId)));
             return kendoGrid;
         }
 
         public void EditInlineGridProductName(string prodName)
         {
-            Thread.Sleep(1000);
-            Browser.Driver.FindElement(By.LinkText("Inline editing")).Click();
-            Thread.Sleep(1000);
-            //var tableRow = kendoGrid.GetTableRowByModelId(1);
-            //var edit = tableRow.FindElement(By.XPath("/html/body/div[4]/div[2]/div[2]/div[2]/div/div/div[3]/table/tbody/tr/td[5]/a"));
-            //edit.Click();
-            //tableRow.FindElement(By.Name("ProductName")).SendKeys("BLAH");
-            //tableRow.FindElement(
-            //    By.CssSelector("span.k-link > span.k-icon.k-i-arrow-s")).Click();
-            ////tableRow.FindElement(
-            ////    By.CssSelector("input.k-formatted-value.k-input")).Clear();
-            ////tableRow.FindElement(
-            ////    By.CssSelector("input.k-formatted-value.k-input")).SendKeys("20");
-            //tableRow.FindElement(By.LinkText("Update")).Click();
-
-            Browser.Driver.FindElement(
+            Browser.DriverContext.FindElement(Browser.Driver, By.LinkText("Inline editing")).Click();
+            Browser.DriverContext.FindElement(Browser.Driver,
                 By.XPath("/html/body/div[4]/div[2]/div[2]/div[2]/div/div/div[3]/table/tbody/tr/td[5]/a")).Click();
             var input = Browser.Driver.FindElement(
                 By.ClassName("k-textbox"));
-            Actions builder = new Actions((IWebDriver)Browser.Driver);
+            Actions builder = new Actions(Browser.DriverContext);
             builder.MoveToElement(input).DoubleClick(input).Build().Perform();
             input.Clear();
             input.SendKeys(prodName);
             Browser.Driver.FindElement(By.LinkText("Update")).Click();
-
         }
 
         public bool CanEditProductName(string prodName)

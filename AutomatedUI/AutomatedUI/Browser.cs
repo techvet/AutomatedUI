@@ -18,6 +18,11 @@ namespace AutomatedUI
             get { return webDriver; }
         }
 
+        public static IWebDriver DriverContext
+        {
+            get { return webDriver; }
+        }
+
         public static void Goto(string url)
         {
             webDriver.Url = url;
